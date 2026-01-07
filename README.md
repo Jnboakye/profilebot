@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ProfileBot
 
-## Getting Started
+ProfileBot is a small Next.js app that introduces an AI assistant for summarizing people or companies from LinkedIn or website URLs. The landing page highlights the value props and links to an embedded chatbot page powered by Relevance AI.
 
-First, run the development server:
+## Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project layout
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/app/page.tsx` – landing page with hero, feature cards, contact footer, and CTA to the bot.
+- `src/app/bot/page.tsx` – embeds the Relevance AI chat experience in an iframe plus a back-to-home link.
+- `src/app/layout.tsx` – global layout, font setup (Geist), metadata, and body wrapper.
+- `src/app/globals.css` – global styles and CSS variables, imports Tailwind base via `@import "tailwindcss";`.
+- `public/images/image1.png` – hero illustration used on the landing page.
+- `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs` – framework, TypeScript, linting, and PostCSS/Tailwind configuration.
+- `package.json` / `package-lock.json` – dependencies and scripts (`dev`, `build`, `start`, `lint`).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+- Home (`/`): read about the product and click **Try our bot** to continue.
+- Bot (`/bot`): paste a LinkedIn or website URL into the embedded chatbot to generate a summary. The iframe styling lives inline in `src/app/bot/page.tsx`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Standard Next.js deployment (Vercel works out of the box). Ensure environment variables for the embedded bot (if needed later) are configured in the hosting platform; none are required for the current static embed.
